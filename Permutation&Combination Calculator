@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+long factorial(long n){   //Function to calculate Factorial
+    for (int x = n-1; x > 0; x = x - 1){   //For loop for given long number
+        n = n*x;         
+    }
+    return n;     //Return the calculated factorial 
+}
+
+int main(int argc, char *argv[]){
+    long x = atoi(argv[1]);     //converts the char to integers for calculation
+    long y = atoi(argv[2]);
+    long permutation, combination, n, r, temp; //variables for calculation of P and C
+    
+    n = x;   //Assign x and y to n and r for easier read
+    r = y;
+    temp = x - y;   //to do (n-r)!
+    
+    permutation = factorial(n) / factorial(temp); //Permutation calculation n! / (n-r)!
+    combination = permutation / factorial(r);     //Combination calculation p(n,r) / r!
+    
+    
+    printf("P(%ld,%ld) = %li\n", x, y, permutation); //Prints output for permutation
+    printf("C(%ld,%ld) = %li\n", x, y, combination); //Prints output for combination
+}
